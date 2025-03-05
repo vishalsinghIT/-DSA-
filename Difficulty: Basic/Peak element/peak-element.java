@@ -52,43 +52,33 @@ class Solution {
 
     public int peakElement(int[] arr) {
         // code here
-        // length of array 
-        int n=arr.length;
         
-        // array with zero elements 
-        if(n==0)
-        {
+          int n = arr.length; 
+        
+        if (n == 0) {  // If the array has no elements
             return -1;
         }
-        // if array contain one elements
-        if(n==1)
-        {
+        
+        if (n == 1) {  // If the array has only one element, it's the peak
             return 0;
         }
-        for(int index=0; index<n; index++)
-        {
-            // first elements
-            if(index==0)
-            {
-                if(arr[index]> arr[index+1])
-                {
+
+        for (int index = 0; index < n; index++) {
+            if (index == 0) {  // Checking the first element
+                if (arr[index] > arr[index + 1]) {
+                    return index;
+                }
+            } else if (index == n - 1) {  // Checking the last element
+                if (arr[index] > arr[index - 1]) {
+                    return index;
+                }
+            } else {  // Checking middle elements
+                if (arr[index] > arr[index - 1] && arr[index] > arr[index + 1]) {
                     return index;
                 }
             }
-            else if(index==n-1)
-            {
-                if(arr[index] > arr[index-1]) //last elements
-                {
-                    return index;
-                }
-            }else{
-                if(arr[index]>arr[index+1] && arr[index]> arr[index-1])
-                {
-                    return index;
-                }
-            }
-            
         }
+        
         return -1;
     }
 }
